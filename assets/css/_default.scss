@@ -78,3 +78,8 @@
 //     text-decoration: underline;
 //   }
 // }
+
+*[lazy=loading] {
+  background-size: 48px !important;
+  background-position: center center !important;
+}

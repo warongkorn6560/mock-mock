@@ -11,13 +11,13 @@
       ></div>
       <img
         v-if="hasNavigation"
-        class="swiper-button-prev transform rotate-180 arrowHover"
+        class="swiper-button-prev transform -rotate-90 arrowHover"
         :class="`prev-${this.id}`"
         :src="arrow"
       />
       <img
         v-if="hasNavigation"
-        class="swiper-button-next transform arrowHover"
+        class="swiper-button-next transform rotate-90 arrowHover"
         :class="`next-${this.id}`"
         :src="arrow"
       />
@@ -26,8 +26,8 @@
 </template>
 
 <script>
-import { directive } from 'vue-awesome-swiper'
-import 'assets/css/_swiper.scss'
+import { directive } from "vue-awesome-swiper";
+import "assets/css/_swiper.scss";
 
 export default {
   directives: {
@@ -52,7 +52,7 @@ export default {
     },
   },
   data: () => ({
-    arrow: 'images/arrow.svg',
+    arrow: "chevron.svg",
     bulletLength: 0,
     id: null,
     defalutSwiperOption: {
@@ -75,29 +75,29 @@ export default {
   }),
   computed: {
     _swiper() {
-      return this.mySwiper
+      return this.mySwiper;
     },
     _swiperOption() {
       return {
         ...this.defalutSwiperOption,
         ...this.swiperOption,
         ...this.customSwiperOption,
-      }
+      };
     },
   },
   created() {
-    this.id = `swiper-${~~(Math.random() * 100000)}`
+    this.id = `swiper-${~~(Math.random() * 100000)}`;
     if (this.hasNavigation) {
       this.defalutSwiperOption.navigation = {
         nextEl: `.next-${this.id}`,
         prevEl: `.prev-${this.id}`,
-      }
+      };
     }
   },
   mounted() {
     this.$nextTick(() => {
-      this.$emit('instance', this._swiper)
-    })
+      this.$emit("instance", this._swiper);
+    });
 
     if (this.hasAutoplay) {
       this.customSwiperOption = {
@@ -107,10 +107,10 @@ export default {
           delay: 2500,
           disableOnInteraction: false,
         },
-      }
+      };
     }
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>

@@ -2,8 +2,7 @@
   <div>
     <div>
       <div>
-        <canvas id="canvas" height="720" width="960"></canvas>
-        <input value="Save as" type="button" id="save" @click="saveAs()" />
+        <canvas id="canvas" height="500" width="1440"></canvas>
       </div>
     </div>
   </div>
@@ -26,29 +25,20 @@ export default {
     //   transparentCorners: false,
     // });
 
-    const ImgURL = new fabric.Image.fromURL(
-      "https://images.unsplash.com/photo-1503614418835-dc720bf59271?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=633&q=80",
-      function (urlImg) {
-        urlImg.scale(0.5).set("flipX", true);
-        canvas.add(urlImg);
-      }
-    );
+    const ImgURL = new fabric.Image.fromURL("iconnetflix.png", function (
+      urlImg
+    ) {
+      urlImg.scale(0.5).set("flipX", true);
+      canvas.add(urlImg);
+    });
 
     // canvas.add(rect).setActiveObject(rect);
-  },
-  methods: {
-    saveAs() {
-      const canvas = document.getElementById("canvas");
-      canvas.toBlob(function (blob) {
-        saveAs(blob, "mock-mock.png");
-      });
-    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
 #canvas {
-  background-color: rgba(128, 128, 128, 0.027);
+  background-color: rgba(177, 20, 20, 0.116);
 }
 </style>
