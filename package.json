@@ -1,0 +1,24 @@
+{
+  "name": "mock-mock",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "yarn nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "file-saver": "^2.0.5",
+    "node-sass": "^5.0.0",
+    "nuxt": "^2.14.6",
+    "swiper": "^6.3.5",
+    "vue-awesome-swiper": "^4.1.1",
+    "vue-fabric-wrapper": "^0.3.71"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^3.1.0",
+    "sass-loader": "^10.1.0"
+  }
+}
