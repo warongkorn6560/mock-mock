@@ -2,7 +2,7 @@
   <div>
     <div>
       <div>
-        <canvas id="canvas" height="500" width="1440"></canvas>
+        <canvas id="canvas" height="550" width="1440"></canvas>
       </div>
     </div>
   </div>
@@ -39,6 +39,6 @@ export default {
 
 <style lang="scss" scoped>
 #canvas {
-  background-color: rgba(177, 20, 20, 0.116);
+  background-color: rgba(255, 255, 255, 0);
 }
 </style>
