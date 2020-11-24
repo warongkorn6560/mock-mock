@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full">
+  <div class="flex-col justify-between h-screen">
     <!-- header -->
     <div class="top-header grid grid-cols-12 grid-flow-col items-center">
       <div
@@ -8,9 +8,28 @@
       >
         <img :src="downloadIcon" class="mx-auto h-full py-3" />
       </div>
+      <input
+        type="text"
+        v-model="addURL"
+        placeholder="Drop your link here!!"
+        class="col-start-10 col-span-2 mx-2 py-1"
+      />
     </div>
     <!-- fabric -->
-    <div class="z-0"><Fabric /></div>
+    <div>
+      <Fabric :selectedFrame="_selectedFrame" :addURL="addURL" />
+    </div>
+
+    <!-- <transition name="fade" mode="out-in">
+      <div
+        v-if="selectedFrame === i"
+        v-for="(frame, i) in imgSlide"
+        :key="i"
+        :style="{ backgroundImage: `url(${frame})` }"
+        class="w-full frame-img m-12 p-4"
+      ></div>
+    </transition> -->
+
     <!-- swiper -->
     <div class="w-full items-center bot-header">
       <ContentSwiper
@@ -32,6 +51,7 @@
           class="block preload swiper-slide"
         >
           <div
+            @click="selectFrame(i)"
             class="shadow-lg m-4 p-8 rounded-lg cursor-pointer frame-card transform hover:scale-125 hover:-translate-y-4 hover:scale-x-150 hover:z-10 flex justify-center items-center"
           >
             <div
@@ -49,7 +69,8 @@
 <script>
 export default {
   data: () => ({
-    selectedFrame: null,
+    selectedFrame: 0,
+    addURL: "",
     imgSlide: [
       "ipad-pro-landscape.webp",
       "ipad-pro.webp",
@@ -74,6 +95,11 @@ export default {
       });
     },
   },
+  computed: {
+    _selectedFrame() {
+      return this.imgSlide[this.selectedFrame];
+    },
+  },
 };
 </script>
 
@@ -85,6 +111,11 @@ export default {
   @screen md {
     padding-bottom: 40%;
   }
+}
+.frame-img {
+  position: relative;
+  padding-bottom: 30%;
+  @apply bg-contain bg-no-repeat bg-center w-full;
 }
 .top-header {
   width: 100%;
@@ -113,6 +144,7 @@ export default {
     img {
       transition: 0.4s;
       filter: brightness(0) invert(1);
+      transform: scale(1.2);
     }
   }
 }
@@ -137,5 +169,14 @@ export default {
 
 .hide-card {
   display: none;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

@@ -83,3 +83,14 @@
   background-size: 48px !important;
   background-position: center center !important;
 }
+
+
+input {
+ 
+ 
+
+  &:focus {
+    outline: none;
+    border-bottom: 2px solid #ed3f64;
+  }
+}
