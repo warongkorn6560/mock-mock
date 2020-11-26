@@ -17,7 +17,11 @@
     </div>
     <!-- fabric -->
     <div>
-      <Fabric :selectedFrame="_selectedFrame" :addURL="addURL" />
+      <Fabric
+        :selectedFrame="_selectedFrame"
+        :addURL="addURL"
+        :selectedFrameIndex="selectedFrame"
+      />
     </div>
 
     <!-- <transition name="fade" mode="out-in">
