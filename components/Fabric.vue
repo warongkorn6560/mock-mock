@@ -43,7 +43,10 @@ export default {
   },
   watch: {
     selectedFrame: {
+      immediate: true,
       handler() {
+        if (!process.client) return;
+        if (!this.canvas) return;
         this.imgURL = new fabric.Image.fromURL(this.selectedFrame, (urlImg) => {
           // this.canvas.clear(urlImg);
           // urlImg.lockMovementY = true;
@@ -301,9 +304,11 @@ export default {
   },
   mounted() {
     this.canvas = new fabric.Canvas("canvas", {
-      isDrawingMode: false,
+      isDrawingMode: true,
       // backgroundColor: "green",
     });
+
+    this.canvas.freeDrawingBrush.width = 10;
 
     // let frame1 = new fabric.Image.fromURL("pixel-duo.webp", (urlImg) => {
     //   urlImg.selectable = false;
@@ -386,8 +391,6 @@ export default {
     // console.log(fabric.Object.prototype.calcTransformMatrix(this.imgURL));
 
     // fabric.Object.prototype.lockMovementY = true;
-
-    // this.canvas.freeDrawingBrush.width = 100;
 
     // this.canvas.on("after:render", function (img) {
     //   this.canvas.clear();
